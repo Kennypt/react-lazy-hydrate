@@ -10,6 +10,7 @@
     "lint:fix": "eslint src/**/*.jsx --fix",
     "depcheck": "depcheck  --ignores='@babel/*,babel-plugin-transform-react-remove-prop-types,core-js,depcheck,husky,prettier,react-dom,webpack-cli'"
   },
+  "keywords": ["react", "hydrate"],
   "author": "KennyPT <ricardo.rocha.pinheiro@gmail.com>",
   "license": "ISC",
   "engines": {
