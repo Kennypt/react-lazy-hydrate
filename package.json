@@ -1,6 +1,6 @@
 {
   "name": "react-lazy-hydrate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React component to do progressive/partial hydration",
   "main": "dist/react-lazy-hydrate.js",
   "scripts": {
@@ -10,7 +10,10 @@
     "lint:fix": "eslint src/**/*.jsx --fix",
     "depcheck": "depcheck  --ignores='@babel/*,babel-plugin-transform-react-remove-prop-types,core-js,depcheck,husky,prettier,react-dom,webpack-cli'"
   },
-  "keywords": ["react", "hydrate"],
+  "keywords": [
+    "react",
+    "hydrate"
+  ],
   "author": "KennyPT <ricardo.rocha.pinheiro@gmail.com>",
   "license": "ISC",
   "engines": {
