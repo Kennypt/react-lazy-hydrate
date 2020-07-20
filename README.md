@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to react-lazy-hydrate 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.2-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-%5E12.0.0-blue.svg" />
   <img src="https://img.shields.io/badge/yarn-%5E1.12.0-blue.svg" />
   <a href="#" target="_blank">
