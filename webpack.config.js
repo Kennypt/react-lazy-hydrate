@@ -7,7 +7,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
+    filename: "[name].js",
   },
   module: {
     rules: [{ test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader" }],

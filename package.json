@@ -2,7 +2,7 @@
   "name": "react-lazy-hydrate",
   "version": "1.0.0",
   "description": "React component to do progressive/partial hydration",
-  "main": "index.js",
+  "main": "dist/react-lazy-hydrate.js",
   "scripts": {
     "build": "rm -rf ./dist && webpack --mode production",
     "test": "echo 'TODO: Add tests!'",
