@@ -1,0 +1,12 @@
+
+node_modules
+coverage
+dist
+.idea
+*.log
+logs
+build
+tmp
+temp
+.nyc_output
+.vscode

@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "post-merge": "yarn",
+    "pre-commit": "lint-staged && yarn audit && yarn depcheck && yarn test"
+  }
+}
