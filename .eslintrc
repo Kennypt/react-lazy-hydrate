@@ -8,5 +8,10 @@
     "quotes": [2, "single", {
       "avoidEscape": true
     }]
+  },
+  "settings": {
+    "react": {
+      "version": "16.13.1"
+    }
   }
 }

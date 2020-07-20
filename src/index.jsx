@@ -1,14 +1,11 @@
 import React, {
-  createReactClass,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
 
-const LazyHydrate = createReactClass({
-  displayName: 'LazyHydrate',
-  render: ({ children, isStatic }) => {
+const LazyHydrate = ({ children, isStatic }) => {
     const ref = useRef(null);
     const [shouldRender, setShouldRender] = useState(
       typeof window === 'undefined'
@@ -91,8 +88,7 @@ const LazyHydrate = createReactClass({
         dangerouslySetInnerHTML={{ __html: '' }}
       />
     );
-  }
-});
+  };
 
 LazyHydrate.propTypes = {
     children: PropTypes.node.isRequired,

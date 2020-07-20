@@ -2,14 +2,15 @@
   "name": "react-lazy-hydrate",
   "version": "1.0.4",
   "description": "React component to do progressive/partial hydration",
-  "main": "src/index.jsx",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "rm -rf ./dist && webpack --mode production",
+    "build": "npx babel src --out-dir lib",
     "test": "echo 'TODO: Add tests!'",
     "lint": "eslint src/**/*.jsx",
     "lint:fix": "eslint src/**/*.jsx --fix",
-    "depcheck": "depcheck  --ignores='@babel/*,babel-plugin-transform-react-remove-prop-types,core-js,depcheck,husky,prettier,react-dom,webpack-cli'"
+    "depcheck": "depcheck  --ignores='@babel/*,babel-plugin-transform-react-remove-prop-types,core-js,depcheck,husky,prettier,react-dom'"
   },
+  "homepage": "https://github.com/Kennypt/react-lazy-hydrate/blob/master/README.md",
   "keywords": [
     "react",
     "hydrate"
@@ -22,17 +23,16 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint src/**/*.jsx --fix",
-      "git add"
+      "eslint src/**/*.jsx --fix"
     ]
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "core-js": "^3.6.5",
     "depcheck": "^1.0.0",
@@ -42,9 +42,7 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "webpack": "^5.0.0-beta.22",
-    "webpack-cli": "^4.0.0-beta.8"
+    "react-dom": "^16.13.1"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
