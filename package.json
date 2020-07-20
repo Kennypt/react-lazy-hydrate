@@ -1,6 +1,6 @@
 {
   "name": "react-lazy-hydrate",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React component to do progressive/partial hydration",
   "main": "lib/index.js",
   "scripts": {
