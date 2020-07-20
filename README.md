@@ -8,15 +8,13 @@
   </a>
 </p>
 
-React component to do progressive/partial hydration.
-
-The objective of this component is to delay the hydration on client side from SSR applications, in order to increase TTI performance until this is natively supported by react (not lazy load a component).
-
-## Install
-
 ```sh
 yarn add react-lazy-hydrate
 ```
+
+React component to do progressive/partial hydration.
+
+The objective of this component is to delay the hydration on client side from SSR applications, in order to increase TTI performance until this is natively supported by react (not lazy load a component).
 
 ## Props
 
@@ -29,10 +27,14 @@ yarn add react-lazy-hydrate
 
 Progressive hydration is achieved by delaying the hydration when the web application goes into idle mode, but it has an intersection observer that if the component is visible by the user, then it hydrates the component immediately (urgent).
 
-```html
-  <ReactLazyHydrate>
-    <Component />
-  </ReactLazyHydrate>
+```js
+  import ReactLazyHydrate from 'react-lazy-hydrate';
+
+  const ScrollToComponent = () => (
+    <ReactLazyHydrate>
+      <Component />
+    </ReactLazyHydrate>
+  );
 ```
 
 ### Partial hydration
@@ -41,13 +43,31 @@ If the user has a static content that is rendered on server side and it does not
 
 **NOTE:** This does not remove the child component from the virtual DOM!
 
-```html
-  <ReactLazyHydrate isStatic>
-    <StaticContent />
-  </ReactLazyHydrate>
+```js
+  import ReactLazyHydrate from 'react-lazy-hydrate';
+
+  const StaticComponent = () => (
+    <ReactLazyHydrate isStatic>
+      <Component />
+    </ReactLazyHydrate>
+  );
 ```
 
+## Install
 
+```sh
+yarn install
+```
+
+## Build
+
+```sh
+yarn build
+```
+
+## TODO
+
+- Add unit tests
 
 ## Author
 
