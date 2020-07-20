@@ -23,7 +23,8 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint src/**/*.jsx --fix"
+      "eslint src/**/*.jsx --fix",
+      "git add"
     ]
   },
   "dependencies": {},
