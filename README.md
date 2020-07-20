@@ -10,7 +10,7 @@
 
 React component to do progressive/partial hydration.
 
-The objective of this component is to delay the hydration on client side from SSR applications, in order to increase performance (not lazy load a component).
+The objective of this component is to delay the hydration on client side from SSR applications, in order to increase TTI performance until this is natively supported by react (not lazy load a component).
 
 ## Install
 
