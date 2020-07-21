@@ -68,6 +68,7 @@ yarn build
 ## TODO
 
 - Add unit tests
+- Upgrade to typescript
 
 ## Author
 
