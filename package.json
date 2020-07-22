@@ -12,6 +12,10 @@
     "depcheck": "depcheck  --ignores='@babel/*,babel-plugin-transform-react-remove-prop-types,core-js,depcheck,husky,prettier,react-dom'"
   },
   "homepage": "https://github.com/Kennypt/react-lazy-hydrate/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kennypt/react-lazy-hydrate.git"
+  },
   "keywords": [
     "react",
     "hydrate"
