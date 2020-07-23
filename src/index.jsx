@@ -128,7 +128,7 @@ LazyHydrate.propTypes = {
 
 LazyHydrate.defaultProps = {
     isStatic: false,
-    wrapper: 'section',
+    wrapperComponent: 'section',
     wrapperComponentProps: {},
 };
 
