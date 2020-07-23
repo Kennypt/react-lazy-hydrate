@@ -2,13 +2,21 @@ import React, {
   useEffect,
   useRef,
   useState,
+  wrapperComponent,
+  wrapperComponentProps,
+  onHydrationRender,
 } from 'react';
 import PropTypes from 'prop-types';
+import isBrowser from './utils/isBrowser';
+
+// No bg, borders or paddings from wrapper
+const wrapperStyle = { display: 'contents' };
+const isOnBrowser = isBrowser();
 
 const LazyHydrate = ({ children, isStatic }) => {
     const ref = useRef(null);
     const [shouldRender, setShouldRender] = useState(
-      typeof window === 'undefined'
+      !isOnBrowser // Should render if SSR
     );
 
     useEffect(() => {
@@ -36,30 +44,36 @@ const LazyHydrate = ({ children, isStatic }) => {
 
           setShouldRender(true);
         });
+      } else {
+        console.warn('react-lazy-hydrate: "requestIdleCallback" polyfill missing');
       }
 
       // Render if urgent (user in view)
-      iObs = new window.IntersectionObserver(async ([entry], obs) => {
-        if (!entry.isIntersecting && !shouldRender) {
-          return;
-        }
+      if (window.IntersectionObserver) {
+        iObs = new window.IntersectionObserver(async ([entry], obs) => {
+          if (!entry.isIntersecting && !shouldRender) {
+            return;
+          }
 
-        obs.unobserve(currentRef);
+          obs.unobserve(currentRef);
 
-        if (shouldRender) {
-          // Already rendered by request idle callback
-          return;
-        }
+          if (shouldRender) {
+            // Already rendered by request idle callback
+            return;
+          }
 
-        if (handleIdleCallback && window.cancelIdleCallback) {
-          window.cancelIdleCallback(handleIdleCallback);
-        }
+          if (handleIdleCallback && window.cancelIdleCallback) {
+            window.cancelIdleCallback(handleIdleCallback);
+          }
 
-        // Its urgent, going to render
-        setShouldRender(true);
-      });
+          // Its urgent, going to render
+          setShouldRender(true);
+        });
+      } else {
+        console.warn('react-lazy-hydrate: "IntersectionObserver" polyfill missing');
+      }
 
-      if (currentRef) {
+      if (currentRef && iObs) {
         iObs.observe(currentRef);
       }
 
@@ -76,27 +90,46 @@ const LazyHydrate = ({ children, isStatic }) => {
 
     // if we're in the server or a spa navigation, just render it
     if (shouldRender) {
-      return <section>{children}</section>;
+      if (onHydrationRender && isOnBrowser) {
+        onHydrationRender();
+      }
+
+      return React.createElement(
+        wrapperComponent,
+        {
+          style: wrapperStyle,
+          ...wrapperComponentProps
+        },
+        children
+      );
     }
 
     // avoid re-render on the client
     // eslint-disable-next-line react/no-danger
-    return (
-      <section
-        ref={ref}
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: '' }}
-      />
+    return React.createElement(
+      wrapperComponent,
+      {
+        style: wrapperStyle,
+        ref,
+        suppressHydrationWarning: true,
+        dangerouslySetInnerHTML: { __html: '' },
+        ...wrapperComponentProps
+      }
     );
   };
 
 LazyHydrate.propTypes = {
     children: PropTypes.node.isRequired,
     isStatic: PropTypes.bool,
+    wrapperComponent: PropTypes.oneOf(PropTypes.node, PropTypes.string),
+    wrapperComponentProps: PropTypes.object,
+    onHydrationRender: PropTypes.func,
 };
 
 LazyHydrate.defaultProps = {
     isStatic: false,
+    wrapper: 'section',
+    wrapperComponentProps: {},
 };
 
 export default LazyHydrate;

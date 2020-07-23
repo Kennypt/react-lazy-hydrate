@@ -14,12 +14,17 @@ yarn add react-lazy-hydrate
 
 React component to do progressive/partial hydration.
 
-The objective of this component is to delay the hydration on client side from SSR applications, in order to increase TTI performance until this is natively supported by react (not lazy load a component).
+The objective of this component is to delay the hydration on client side from SSR applications, in order to increase TTI performance until this is natively supported by react (not to lazy load a component).
+
+[🕹️ Playground](https://codesandbox.io/s/react-lazy-hydrate-d7t9t)
 
 ## Props
 
-- `children`: Element to be progressive/partially hydrated
-- `isStatic`: If the element is static, avoid hydration
+- `children`* (Component): Element to be progressive/partially hydrated (mandatory)
+- `isStatic` (boolean): If the element is static, avoid hydration 
+- `wrapperComponent` (String/Component): Wrapper component. Its `section` by default
+- `wrapperComponentProps` (Object): Wrapper component properties
+- `onHydrationRender` (Function): Callback to be executed on hydration render
 
 ## Usage
 
@@ -48,6 +53,22 @@ If the user has a static content that is rendered on server side and it does not
 
   const StaticComponent = () => (
     <ReactLazyHydrate isStatic>
+      <Component />
+    </ReactLazyHydrate>
+  );
+```
+
+## Examples
+
+```js
+  import ReactLazyHydrate from 'react-lazy-hydrate';
+
+  const ScrollToComponent = () => (
+    <ReactLazyHydrate 
+      wrapperComponent="div" 
+      wrapperComponentProps={{ id: 'lazyWrapperId' }} 
+      onHydrationRender={() => console.log('Going to hydrate!!')}
+    >
       <Component />
     </ReactLazyHydrate>
   );
