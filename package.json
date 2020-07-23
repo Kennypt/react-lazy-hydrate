@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "postinstall": "yarn outdated",
+    "prepublish": "yarn build",
     "build": "npx babel src --out-dir lib",
     "test": "echo 'TODO: Add tests!'",
     "lint": "eslint src/**/*.jsx",
