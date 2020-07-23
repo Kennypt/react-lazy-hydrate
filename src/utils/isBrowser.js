@@ -1,1 +1,1 @@
-export default () => typeof window !== 'undefined' && window.matchMedia;
+export default () => typeof window !== 'undefined' && window.document;

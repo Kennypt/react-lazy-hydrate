@@ -2,9 +2,6 @@ import React, {
   useEffect,
   useRef,
   useState,
-  wrapperComponent,
-  wrapperComponentProps,
-  onHydrationRender,
 } from 'react';
 import PropTypes from 'prop-types';
 import isBrowser from './utils/isBrowser';
@@ -13,7 +10,13 @@ import isBrowser from './utils/isBrowser';
 const wrapperStyle = { display: 'contents' };
 const isOnBrowser = isBrowser();
 
-const LazyHydrate = ({ children, isStatic }) => {
+const LazyHydrate = ({
+    children,
+    isStatic,
+    wrapperComponent,
+    wrapperComponentProps,
+    onHydrationRender,
+  }) => {
     const ref = useRef(null);
     const [shouldRender, setShouldRender] = useState(
       !isOnBrowser // Should render if SSR
