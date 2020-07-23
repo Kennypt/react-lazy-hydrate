@@ -23,7 +23,7 @@ The objective of this component is to delay the hydration on client side from SS
 ## Props
 
 - `children`* (Component): Element to be progressive/partially hydrated (mandatory)
-- `isStatic` (boolean): If the element is static, avoid hydration 
+- `isStatic` (boolean): If the element is static, avoid hydration. **NOTE** This will only work with SSR.
 - `wrapperComponent` (String/Component): Wrapper component. Its `section` by default
 - `wrapperComponentProps` (Object): Wrapper component properties
 - `onHydrationRender` (Function): Callback to be executed on hydration render
@@ -44,7 +44,7 @@ Progressive hydration is achieved by delaying the hydration when the web applica
   );
 ```
 
-### Partial hydration
+### Partial hydration (SSR only)
 
 If the user has a static content that is rendered on server side and it does not change on client side no matter what the user does, and it does not have any js animations/interactions, like text, then there is no need to hydrate the component, for that you should add the prop `isStatic`.
 

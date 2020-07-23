@@ -124,7 +124,7 @@ const LazyHydrate = ({
 LazyHydrate.propTypes = {
     children: PropTypes.node.isRequired,
     isStatic: PropTypes.bool,
-    wrapperComponent: PropTypes.oneOf(PropTypes.node, PropTypes.string),
+    wrapperComponent: PropTypes.oneOf([PropTypes.node, PropTypes.string]),
     wrapperComponentProps: PropTypes.object,
     onHydrationRender: PropTypes.func,
 };
